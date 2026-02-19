@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Vignesh — Live Investment Portfolio Dashboard"/>
+  <title>Investments - Vignesh</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>"/>
+  <link rel="stylesheet" href="./assets/style.css"/>
+</head>
+<body>
+
+<!-- ── SPINNER OVERLAY ── -->
+<div class="spinner-overlay" id="spinnerOverlay">
+  <div class="spinner"></div>
+  <div class="spinner-text" id="spinnerText">Loading…</div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<!-- ── TOP BAR ── -->
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon">💼</div>
+    <div>
+      <div class="brand-name">Investments - Vignesh</div>
+      <div class="brand-sub">Live Investment Dashboard</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span class="status-dot" id="statusDot"></span>
+    <span class="last-updated" id="lastUpdated">Fetching…</span>
+    <button class="refresh-btn" id="refreshBtn" onclick="handleRefresh()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+      </svg>
+      <span>Refresh Prices</span>
+    </button>
+  </div>
+</header>
+
+<!-- ── LAYOUT ── -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sideNav">
+    <div style="padding:16px 10px;color:#94a3b8;font-size:13px">Loading…</div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- SUMMARY CARDS -->
+    <div class="section-title">Portfolio <span>Overview</span></div>
+    <div class="sum-grid" id="summaryGrid"></div>
+
+    <!-- PANELS -->
+    <div id="mainContent">
+
+      <!-- DASHBOARD (default) -->
+      <div class="panel active" id="panel-dashboard"></div>
+
+      <!-- FD -->
+      <div class="panel" id="panel-fd"></div>
+
+      <!-- MF Mahesh -->
+      <div class="panel" id="panel-mf-mahesh"></div>
+
+      <!-- MF Family -->
+      <div class="panel" id="panel-mf-family"></div>
+
+      <!-- Stocks NSE/BSE -->
+      <div class="panel" id="panel-stocks-nse"></div>
+
+      <!-- Stocks NASDAQ -->
+      <div class="panel" id="panel-stocks-nas"></div>
+
+      <!-- Gold -->
+      <div class="panel" id="panel-gold"></div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ── MODAL ── -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeModalOnBackdrop(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Add Entry</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="./assets/app.js"></script>
+</body>
+</html>
